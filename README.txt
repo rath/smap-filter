@@ -4,13 +4,15 @@ SMAP filter tool for java web developers.
 
 * Quick Start
 
-  SmapFilter smap = new SmapFilter();
-  smap.setWorkDirectory(application); // if you are on a jsp page
-  smap.setWorkDirectory(getServletContext()); // if you are on a servlet
   try {
     // your logics will be here
   } catch( Exception e ) { 
+
+    SmapFilter smap = new SmapFilter();
+    smap.setWorkDirectory(application); // if you are on a jsp page
+    smap.setWorkDirectory(getServletContext()); // if you are on a servlet
     smap.filterException(e);
+
     e.printStackTrace(); 
   }
 
