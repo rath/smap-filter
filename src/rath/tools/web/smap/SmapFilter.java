@@ -72,13 +72,13 @@ public class SmapFilter {
 	protected StackTraceElement filterTraceElementImpl(StackTraceElement ste) throws IOException {
 		// jsp 소스코드라는 가정하에 이 메서드가 불려진 것이다.
 		
-		// resin specific 
-		File smapFile = new File(workDirectory, ste.getClassName().replace(".", "/") + ".java.smap");
-		if( !smapFile.exists() ) 
-			// tomcat specific 
-			smapFile = new File(workDirectory, ste.getClassName().replace(".", "/") + ".class.smap");
-		
 		if( !smapInfo.containsKey(ste.getClassName()) ) {
+			// resin specific 
+			File smapFile = new File(workDirectory, ste.getClassName().replace(".", "/") + ".java.smap");
+			if( !smapFile.exists() ) 
+				// tomcat specific 
+				smapFile = new File(workDirectory, ste.getClassName().replace(".", "/") + ".class.smap");
+			
 			Map<Integer, SmapFile> smapFiles = parseSmapFile(smapFile);
 			smapInfo.put(ste.getClassName(), smapFiles);
 		}
