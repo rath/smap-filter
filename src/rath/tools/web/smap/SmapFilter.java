@@ -52,6 +52,10 @@ public class SmapFilter {
 		e.setStackTrace(ste);
 	}
 	
+	public StackTraceElement filterStackTrace( StackTraceElement in ) throws IOException {
+		return filterTraceElementImpl(in);
+	}
+	
 	public StackTraceElement[] filterStackTraces( StackTraceElement[] in ) throws IOException {
 		StackTraceElement[] ret = new StackTraceElement[in.length];
 		for(int i=0; i<in.length; i++) {
